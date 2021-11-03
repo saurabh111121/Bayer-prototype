@@ -7,9 +7,12 @@
 <title>Sample Page</title>
 <jsp:include page="headerImports.jsp"></jsp:include>
 </head>
+<header>
+ <jsp:include page="topNav.jsp"></jsp:include>
+</header>
 <body>
 
- <jsp:include page="topNav.jsp"></jsp:include>
+
 
 
 
