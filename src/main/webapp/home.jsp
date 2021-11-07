@@ -292,7 +292,7 @@
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">Login</a>
 				<ul class="dropdown-menu form-wrapper">					
 					<li>
-						<form action="/examples/actions/confirmation.php" method="post">
+						<form action="./customerLogin" method="post">
 							<p class="hint-text">Sign in with your social media account</p>
 							<div class="form-group social-btn clearfix">
 								<a href="#" class="btn btn-primary pull-left"><i class="fa fa-facebook"></i> Facebook</a>
@@ -300,10 +300,10 @@
 							</div>
 							<div class="or-seperator"><b>or</b></div>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Email" required="required">
+								<input type="text" class="form-control" placeholder="Email" name="email" required="required">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password" required="required">
+								<input type="password" class="form-control" placeholder="Password" name="password" required="required">
 							</div>
 							<input type="submit" class="btn btn-primary btn-block" value="Login">
 							<div class="form-footer">

@@ -1,6 +1,8 @@
 package com.bayer.customer.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,41 +10,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bayer.customer.bean.CustomerAccountBean;
-import com.bayer.customer.dao.CustomerSignUpDao;
+import com.bayer.customer.dao.CustomerLoginDao;
 
-@WebServlet("/customerSignUp")
-public class CustomerSignUp extends HttpServlet {
+@WebServlet("/customerLogin")
+public class CustomerLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    public CustomerSignUp() {
+   
+    public CustomerLogin() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String first_name = request.getParameter("first_name");
-		String last_name = request.getParameter("last_name");
-		String email = request.getParameter("email_signUp");
-		long mobile_number = Long.parseLong(request.getParameter("mobile_number"));
-		String password = request.getParameter("password_signUp");
+		String email = request.getParameter("email");
+		String pass = request.getParameter("password");
+		System.out.println("doPost : " + email + " " + pass);
 		
 		CustomerAccountBean data = new CustomerAccountBean();
-		data.setFirst_name(first_name);
-		data.setLast_name(last_name);
 		data.setEmail(email);
-		data.setMobile_number(mobile_number);
-		data.setPassword(password);
+		data.setPassword(pass);
 		
-		boolean result = new CustomerSignUpDao().signUp(data);
-		if(result) {
+		int account_id = new CustomerLoginDao().accountLogin(data);
+		System.out.println("account_id : " + account_id);
+		if(account_id == 0) {
+			System.out.println("id was 0 ");
 			response.sendRedirect("login.jsp");
 		}else {
-			response.sendRedirect("signUp.jsp");
+			 request.setAttribute("account_id", account_id);
+			 response.sendRedirect("./profile");
 		}
 		
 		

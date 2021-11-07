@@ -6,17 +6,17 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.bayer.customer.bean.SignUpBean;
+import com.bayer.customer.bean.CustomerAccountBean;
 import com.bayer.database.DbConnection;
 
-public class SignUpDao {
+public class CustomerSignUpDao {
 	PreparedStatement ps = null;
 	PreparedStatement ps1 = null;
 	ResultSet rs = null;
 	ResultSet rs1 = null;
 	String timeStamp = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date());;
 	 
-	public Boolean signUp(SignUpBean data) {
+	public Boolean signUp(CustomerAccountBean data) {
 		try {
 		   Connection con = new DbConnection().getConnection();
 		   ps = con.prepareStatement("INSERT INTO bayer.users_customer(first_name,last_name,email,password,mobile_number,creation_date,last_access_date,is_enabled) VALUES(?,?,?,?,?,?,?,?)");

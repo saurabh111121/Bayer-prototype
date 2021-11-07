@@ -1,6 +1,9 @@
 package com.bayer.customer.bean;
 
-public class SignUpBean {
+public class CustomerAccountBean {
+	
+	private int account_id;
+	private int account_number;
 	private String first_name;
 	private String last_name;
 	private long mobile_number;
@@ -8,6 +11,18 @@ public class SignUpBean {
 	private String password;
 	
 	
+	public int getAccount_id() {
+		return account_id;
+	}
+	public void setAccount_id(int account_id) {
+		this.account_id = account_id;
+	}
+	public int getAccount_number() {
+		return account_number;
+	}
+	public void setAccount_number(int account_number) {
+		this.account_number = account_number;
+	}
 	public String getFirst_name() {
 		return first_name;
 	}
@@ -38,6 +53,8 @@ public class SignUpBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
 	
 	
 	
