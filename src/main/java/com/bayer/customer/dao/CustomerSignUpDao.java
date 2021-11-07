@@ -14,11 +14,12 @@ public class CustomerSignUpDao {
 	PreparedStatement ps1 = null;
 	ResultSet rs = null;
 	ResultSet rs1 = null;
+	Connection con = null;
 	String timeStamp = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date());;
 	 
 	public Boolean signUp(CustomerAccountBean data) {
 		try {
-		   Connection con = new DbConnection().getConnection();
+		   con = new DbConnection().getConnection();
 		   ps = con.prepareStatement("INSERT INTO bayer.users_customer(first_name,last_name,email,password,mobile_number,creation_date,last_access_date,is_enabled) VALUES(?,?,?,?,?,?,?,?)");
 		   ps.setString(1, data.getFirst_name());
 		   ps.setString(2, data.getLast_name());
@@ -35,6 +36,14 @@ public class CustomerSignUpDao {
 		   
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				ps.close();
+				con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 			
 		return false;
