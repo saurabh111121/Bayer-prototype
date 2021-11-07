@@ -11,23 +11,36 @@
 	<jsp:include page="topNav.jsp"></jsp:include>
 </header>
 <body>
-<br><br><br>
+	<br>
+	<br>
+	<br>
 
 	<div class="row">
 		<div class="col-3"></div>
 		<div class="col-6">
-			<form action="./customerLogin">
-			<div class="form-group">
-				<input type="email" class="form-control" placeholder="Email"
-					name="email" id="email" required="required">
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-control" placeholder="Password"
-					name="password" id="password" required="required">
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-success">Login In</button>
-			</div>
+			<form action="./customerLogin" method="POST">
+				<p class="hint-text">Sign in with your social media account</p>
+				<div class="form-group social-btn clearfix">
+					<a href="#" class="btn btn-primary pull-left"><i
+						class="fa fa-facebook"></i> Facebook</a> <a href="#"
+						class="btn btn-info pull-right"><i class="fa fa-twitter"></i>
+						Twitter</a>
+				</div>
+				<div class="or-seperator">
+					<b>or</b>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Email"
+						id="email" required="required">
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="Password"
+						id="password" required="required">
+				</div>
+				<input type="submit" class="btn btn-primary btn-block" value="Login">
+				<div class="form-footer">
+					<a href="#">Forgot Your password?</a>
+				</div>
 			</form>
 		</div>
 		<div class="col-3"></div>
@@ -40,4 +53,5 @@
 
 </body>
 <jsp:include page="footerImports.jsp"></jsp:include>
+
 </html>

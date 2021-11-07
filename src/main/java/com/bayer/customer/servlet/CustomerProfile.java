@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.bayer.customer.dao.CustomerProfileDao;
 
 
 @WebServlet("/customerProfile")
@@ -20,13 +23,14 @@ public class CustomerProfile extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//int account_id = Integer.parseInt(request.getParameter("account_id"));
 		Object account_id = request.getAttribute("account_id");
-		
-		request.setAttribute("account_id", account_id);
+		int id = (Integer) account_id;
+		HttpSession session=request.getSession();  
+	    session.setAttribute("account_id",id);  
+	    String account_details = new CustomerProfileDao().fetchDeatils(id);
+		request.setAttribute("account_details", account_details);
 		 RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
 		 rd.forward(request, response); 
-		
 		
 	}
 

@@ -44,7 +44,8 @@ public class CustomerLogin extends HttpServlet {
 			response.sendRedirect("login.jsp");
 		}else {
 			 request.setAttribute("account_id", account_id);
-			 response.sendRedirect("./profile");
+			 RequestDispatcher rd = request.getRequestDispatcher("./customerProfile");
+			 rd.forward(request, response); 
 		}
 		
 		
